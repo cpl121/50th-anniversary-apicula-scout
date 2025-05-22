@@ -90,8 +90,8 @@ export default function Home() {
               interactivo
             </p>
 
-            <button onClick={() => handleClick('scout-tent')} className="group cursor-pointer relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/90" >
-              <span className="relative">Probar Tienda</span>
+            <button onClick={() => handleClick('objects')} className="group cursor-pointer relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/90" >
+              <span className="relative">Ver Objetos Legendarios</span>
             </button>
           </div>
         </div>
