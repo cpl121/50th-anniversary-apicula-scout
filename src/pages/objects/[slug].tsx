@@ -85,6 +85,21 @@ const ObjectPage: NextPage = () => {
   const object = parsedSlug ? objects[parsedSlug] : undefined;
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && navigator.xr?.isSessionSupported) {
+      navigator.xr
+        .isSessionSupported('immersive-ar')
+        .then((supported) => {
+          setSupportsAR(supported);
+        })
+        .catch(() => {
+          setSupportsAR(false);
+        });
+    } else {
+      setSupportsAR(false);
+    }
+  }, []);
+
+  useEffect(() => {
     if (!supportsAR && typeof window !== 'undefined' && !customElements.get('model-viewer')) {
       const script = document.createElement('script');
       script.type = 'module';
