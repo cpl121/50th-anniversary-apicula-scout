@@ -124,7 +124,7 @@ const Popup = ({
             <p className="text-lg text-gray-300">
               Pulsa en el boton para entrar en AR.
               <br />
-              Si no ves nada, pulsar el boton "No veo nada"
+              Si no ves nada, pulsar el boton No veo nada
             </p>
           </div>
         )}
