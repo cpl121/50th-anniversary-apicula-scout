@@ -151,10 +151,10 @@ const ObjectPage: NextPage = () => {
   return (
     <div className="flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center">
       <div className="flex flex-col items-center justify-center mt-8 space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-green-700 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#54E794FF] tracking-tight">
           {object.title}
         </h1>
-        <div className="w-24 h-1 bg-green-600 rounded-full mb-4" />
+        <div className="w-24 h-1 bg-[#54E794FF] rounded-full mb-4" />
         <p className="text-lg md:text-xl max-w-2xl mb-8 text-zinc-200 italic">
           {object.description}
         </p>
