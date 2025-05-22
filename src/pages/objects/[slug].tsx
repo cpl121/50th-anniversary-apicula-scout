@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { ARButton } from 'three/examples/jsm/webxr/ARButton.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { NextPage } from 'next';
+import Image from 'next/image';
 
 interface Object {
   title: string;
@@ -11,6 +12,11 @@ interface Object {
   glbModel: string;
   iosModel: string;
 }
+
+type ButtonProps = {
+  text: string;
+  onClickButton: (value?: boolean) => void;
+};
 
 const objects: Record<string, Object> = {
   tent: {
@@ -75,11 +81,70 @@ const objects: Record<string, Object> = {
   },
 };
 
+const Button = ({ text, onClickButton }: ButtonProps) => {
+  return (
+    <button
+      className="text-md p-4 bg-white/10 hover:bg-white/20 rounded cursor-pointer w-full h-full text-white"
+      onClick={() => onClickButton()}
+    >
+      {text}
+    </button>
+  );
+};
+
+const Popup = ({
+  setShowPopup,
+  supportsAR,
+}: {
+  setShowPopup: (value: boolean) => void;
+  supportsAR: boolean;
+}) => {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none h-full">
+      <div className="w-full h-[60%] max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
+        <h1 className="text-2xl md:text-3xl font-semibold text-center">
+          Explora en Realidad Aumentada
+        </h1>
+        {supportsAR ? (
+          <div className="flex flex-col space-y-8 justify-center items-center">
+            <p className="text-lg text-gray-300">
+              Pulsa en el siguiente icono para entrar en modo de Realidad Aumentada (RA).
+            </p>
+            <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
+              <Image
+                src="/images/realidad-aumentada.svg"
+                alt="Realidad aumentada"
+                width={20}
+                height={20}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col space-y-8 justify-center items-center">
+            <p className="text-lg text-gray-300">
+              Pulsa en el boton para entrar en AR.
+              <br />
+              Si no ves nada, pulsar el boton "No veo nada"
+            </p>
+          </div>
+        )}
+        <div className="w-full">
+          <div className="h-px w-full bg-white/50 my-6" />
+          <div className="w-full">
+            <Button text={'De acuerdo!'} onClickButton={() => setShowPopup(false)} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ObjectPage: NextPage = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
   const { slug } = router.query;
   const [supportsAR, setSupportsAR] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   const parsedSlug = Array.isArray(slug) ? slug[0] : slug;
   const object = parsedSlug ? objects[parsedSlug] : undefined;
@@ -149,30 +214,40 @@ const ObjectPage: NextPage = () => {
   if (!object) return <p>No existe el objeto</p>;
 
   return (
-    <div className="flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center">
-      <div className="flex flex-col items-center justify-center mt-8 space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#54E794FF] tracking-tight">
-          {object.title}
-        </h1>
-        <div className="w-24 h-1 bg-[#54E794FF] rounded-full mb-4" />
-        <p className="text-lg md:text-xl max-w-2xl mb-8 text-zinc-200 italic">
-          {object.description}
-        </p>
+    <>
+      {showPopup && <Popup setShowPopup={setShowPopup} supportsAR={supportsAR} />}
+      <div
+        className={`flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center ${showPopup ? 'blur-xs brightness-20' : ''}`}
+      >
+        <div className="flex flex-col items-center justify-center mt-8 space-y-4 mx-4 overflow-hidden">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#54E794FF] tracking-tight">
+            {object.title}
+          </h1>
+          <div className="w-24 h-1 bg-[#54E794FF] rounded-full mb-4" />
+          <p className="text-lg md:text-xl max-w-2xl mb-8 text-zinc-200 italic">
+            {object.description}
+          </p>
+        </div>
+        {supportsAR ? (
+          <>
+            <div ref={mountRef} style={{ width: '100vw', height: '80vh' }} />
+            <div className="mb-4 w-full px-4">
+              <Button text={'No veo nada'} onClickButton={() => setSupportsAR(false)} />
+            </div>
+          </>
+        ) : (
+          React.createElement('model-viewer', {
+            src: object.glbModel,
+            'ios-src': object.iosModel,
+            ar: true,
+            'ar-modes': 'scene-viewer quick-look',
+            'auto-rotate': true,
+            'camera-controls': true,
+            style: { width: '100%', height: '80vh' },
+          })
+        )}
       </div>
-      {supportsAR ? (
-        <div ref={mountRef} style={{ width: '100vw', height: '80vh' }} />
-      ) : (
-        React.createElement('model-viewer', {
-          src: object.glbModel,
-          'ios-src': object.iosModel,
-          ar: true,
-          'ar-modes': 'scene-viewer quick-look',
-          'auto-rotate': true,
-          'camera-controls': true,
-          style: { width: '100%', height: '80vh' },
-        })
-      )}
-    </div>
+    </>
   );
 };
 
