@@ -4,52 +4,52 @@ const objetos = [
   {
     slug: 'tent',
     titulo: '⛺ La Tienda Fundacional',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'compass',
     titulo: '🧭 La Brújula del Norte Verdadero',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'knot',
     titulo: '🪢 El Nudo del Tiempo',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'canteen',
     titulo: '💧 La Cantimplora del Espíritu Inagotable',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'horn',
     titulo: '📯 El Cuerno de la Llamada',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'axe',
     titulo: '🪓 El Hacha del Clan Perdido',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'campfire',
     titulo: '🔥 El Fuego de la Tribu',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'fleur-de-lis',
     titulo: '🌿 La Flor de Lis Eterna',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'hat',
     titulo: '🎩 El Gorro de Baden-Powell',
-    hasModel: true
+    hasModel: true,
   },
   {
     slug: 'neckerchief',
     titulo: '🧣 El Lazo del Compromiso',
-    hasModel: true
+    hasModel: true,
   },
 ];
 
@@ -60,7 +60,9 @@ const ObjectsIndex = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {objetos.map((objeto) => (
           <Link href={objeto.hasModel ? `/objects/${objeto.slug}` : '/objects'} key={objeto.slug}>
-            <div className={`w-full h-full bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-6 shadow-md ${!objeto.hasModel ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}>
+            <div
+              className={`w-full h-full bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-6 shadow-md ${!objeto.hasModel ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+            >
               <h2 className="text-xl font-semibold text-green-600">{objeto.titulo}</h2>
               {objeto.hasModel ? (
                 <p className="text-zinc-200 mt-1 text-sm">Ver en realidad aumentada →</p>
@@ -73,6 +75,6 @@ const ObjectsIndex = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ObjectsIndex
+export default ObjectsIndex;

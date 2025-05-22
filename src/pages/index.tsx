@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Tent, Flame, Users, Sparkles, Globe2 } from 'lucide-react';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,8 +19,8 @@ export default function Home() {
   }, []);
 
   const handleClick = (path: string) => {
-    router.push(path)
-  }
+    router.push(path);
+  };
 
   return (
     <main className="relative flex min-h-screen flex-col bg-white">
@@ -90,7 +90,10 @@ export default function Home() {
               interactivo
             </p>
 
-            <button onClick={() => handleClick('objects')} className="group cursor-pointer relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/90" >
+            <button
+              onClick={() => handleClick('objects')}
+              className="group cursor-pointer relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/90"
+            >
               <span className="relative">Ver Objetos Legendarios</span>
             </button>
           </div>
