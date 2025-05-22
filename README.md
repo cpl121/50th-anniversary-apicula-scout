@@ -14,7 +14,6 @@ Una web app hecha con Next.js que permite:
 ## 🧭 Tecnologías usadas
 
 - [Next.js](https://nextjs.org/)
-- [Three.js](https://threejs.org/) + WebXR
 - [`<model-viewer>`](https://modelviewer.dev/) como fallback
 - Vercel (deploy)
 - Blender (para crear o editar modelos)

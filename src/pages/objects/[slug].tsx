@@ -1,8 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import * as THREE from 'three';
-import { ARButton } from 'three/examples/jsm/webxr/ARButton.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { NextPage } from 'next';
 import Image from 'next/image';
 
@@ -122,9 +119,7 @@ const Popup = ({
         ) : (
           <div className="flex flex-col space-y-8 justify-center items-center">
             <p className="text-lg text-gray-300">
-              Pulsa en el boton para entrar en AR.
-              <br />
-              Si no ves nada, pulsar el boton No veo nada
+              Tu movil no permite entrar en la realidad aumentada, solo podras ver el objeto 3D. Intentad entrar con otro movil.
             </p>
           </div>
         )}
@@ -140,7 +135,6 @@ const Popup = ({
 };
 
 const ObjectPage: NextPage = () => {
-  const mountRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
   const { slug } = router.query;
   const [supportsAR, setSupportsAR] = useState(false);
@@ -150,10 +144,12 @@ const ObjectPage: NextPage = () => {
   const object = parsedSlug ? objects[parsedSlug] : undefined;
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && navigator.xr?.isSessionSupported) {
-      navigator.xr
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof window !== 'undefined' && (navigator as any)?.isSessionSupported) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (navigator as any)
         .isSessionSupported('immersive-ar')
-        .then((supported) => {
+        .then((supported: boolean) => {
           setSupportsAR(supported);
         })
         .catch(() => {
@@ -173,44 +169,6 @@ const ObjectPage: NextPage = () => {
     }
   }, [supportsAR]);
 
-  useEffect(() => {
-    if (!supportsAR || !object || !mountRef.current) return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      70,
-      window.innerWidth / window.innerHeight,
-      0.01,
-      20,
-    );
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.xr.enabled = true;
-
-    const mountEl = mountRef.current;
-    mountEl.appendChild(renderer.domElement);
-    document.body.appendChild(ARButton.createButton(renderer));
-
-    const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-    light.position.set(0.5, 1, 0.25);
-    scene.add(light);
-
-    const loader = new GLTFLoader();
-    loader.load(object.glbModel, (gltf) => {
-      scene.add(gltf.scene);
-    });
-
-    renderer.setAnimationLoop(() => {
-      renderer.render(scene, camera);
-    });
-
-    return () => {
-      while (mountEl.firstChild) {
-        mountEl.removeChild(mountEl.firstChild);
-      }
-    };
-  }, [supportsAR, object]);
-
   if (!object) return <p>No existe el objeto</p>;
 
   return (
@@ -228,24 +186,15 @@ const ObjectPage: NextPage = () => {
             {object.description}
           </p>
         </div>
-        {supportsAR ? (
-          <>
-            <div ref={mountRef} style={{ width: '100vw', height: '80vh' }} />
-            <div className="mb-4 w-full px-4">
-              <Button text={'No veo nada'} onClickButton={() => setSupportsAR(false)} />
-            </div>
-          </>
-        ) : (
-          React.createElement('model-viewer', {
-            src: object.glbModel,
-            'ios-src': object.iosModel,
-            ar: true,
-            'ar-modes': 'scene-viewer quick-look',
-            'auto-rotate': true,
-            'camera-controls': true,
-            style: { width: '100%', height: '80vh' },
-          })
-        )}
+        {React.createElement('model-viewer', {
+          src: object.glbModel,
+          'ios-src': object.iosModel,
+          ar: true,
+          'ar-modes': 'scene-viewer quick-look',
+          'auto-rotate': true,
+          'camera-controls': true,
+          style: { width: '100%', height: '80vh' },
+        })}
       </div>
     </>
   );
