@@ -17,61 +17,61 @@ type ButtonProps = {
 
 const objects: Record<string, Object> = {
   tent: {
-    title: '⛺ La Tienda Fundacional',
+    title: '⛺ La tienda fundacional',
     description: 'La lona que vio nacer nuestras primeras noches bajo las estrellas.',
     glbModel: '/assets/tent/tent.glb',
     iosModel: '/assets/tent/tent.usdz',
   },
   compass: {
-    title: '🧭 La Brújula del Norte Verdadero',
+    title: '🧭 La brújula del norte verdadero',
     description: 'Siempre señala hacia el espíritu scout.',
     glbModel: '/assets/compass/compass.glb',
     iosModel: '/assets/compass/compass.usdz',
   },
   knot: {
-    title: '🪢 El Nudo del Tiempo',
+    title: '🪢 El nudo del tiempo',
     description: 'Un lazo que une generaciones en una única cuerda de sabiduría.',
     glbModel: '/assets/knot/knot.glb',
     iosModel: '/assets/knot/knot.usdz',
   },
   canteen: {
-    title: '💧 La Cantimplora del Espíritu Inagotable',
+    title: '💧 La cantimplora del espíritu inagotable',
     description: 'Portó el aliento de los exploradores que nunca se rindieron.',
     glbModel: '/assets/canteen/canteen.glb',
     iosModel: '/assets/canteen/canteen.usdz',
   },
   horn: {
-    title: '📯 El Cuerno de la Llamada',
+    title: '📯 El cuerno de la llamada',
     description: 'Una sola nota bastaba para reunir a la patrulla entera.',
     glbModel: '/assets/horn/horn.glb',
     iosModel: '/assets/horn/horn.usdz',
   },
   axe: {
-    title: '🪓 El Hacha del Clan Perdido',
+    title: '🪓 El hacha del clan perdido',
     description: 'Su filo forjó caminos en los bosques más densos.',
     glbModel: '/assets/axe/axe.glb',
     iosModel: '/assets/axe/axe.usdz',
   },
   campfire: {
-    title: '🔥 El Fuego de la Tribu',
+    title: '🔥 El fuego de la tribu',
     description: 'Llama ancestral que reúne historias, cantos y sabiduría compartida.',
     glbModel: '/assets/campfire/campfire.glb',
     iosModel: '/assets/campfire/campfire.usdz',
   },
   'fleur-de-lis': {
-    title: '🌿 La Flor de Lis Eterna',
+    title: '🌿 La flor de lis eterna',
     description: 'Emblema que guía con firmeza a los corazones nobles por el buen camino.',
     glbModel: '/assets/fleur-de-lis/fleur-de-lis.glb',
     iosModel: '/assets/fleur-de-lis/fleur-de-lis.usdz',
   },
   hat: {
-    title: '🎩 El Gorro de Baden-Powell',
+    title: '🎩 El gorro de Baden-Powell',
     description: 'Imbuido con el espíritu del fundador, inspira liderazgo y servicio.',
     glbModel: '/assets/hat/hat.glb',
     iosModel: '/assets/hat/hat.usdz',
   },
   neckerchief: {
-    title: '🧣 El Lazo del Compromiso',
+    title: '🧣 El lazo del compromiso',
     description: 'Su nudo no se deshace: une almas, no solo telas.',
     glbModel: '/assets/neckerchief/neckerchief.glb',
     iosModel: '/assets/neckerchief/neckerchief.usdz',
@@ -103,7 +103,7 @@ const Popup = ({
         <div className="h-px w-full bg-white/50 my-6" />
           <div className="flex flex-col space-y-8 justify-center items-center">
             <p className="text-lg text-gray-300">
-              Pulsa en el siguiente icono para entrar en la Realidad Aumentada.
+              Busca este icono en tu pantalla y haz click en él para entrar en la Realidad Aumentada.
             </p>
             <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
               <Image
@@ -115,15 +115,14 @@ const Popup = ({
             </div>
             <br />
             <p className="text-lg text-gray-300">
-              Si no ves el icono es porque tu móvil no permite su acceso. 
-              <br />
-              Intentad entrar con otro movil.
+            ⚠️ Si no ves el icono es porque tu móvil no permite su acceso. 
+              Intentad entrar con otro móvil.
             </p>
           </div>
         <div className="w-full">
           <div className="h-px w-full bg-white/50 my-6" />
           <div className="w-full">
-            <Button text={'De acuerdo!'} onClickButton={() => setShowPopup(false)} />
+            <Button text={'¡De acuerdo!'} onClickButton={() => setShowPopup(false)} />
           </div>
         </div>
       </div>
@@ -147,12 +146,11 @@ const ObjectPage: NextPage = () => {
       <div
         className={`flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center ${showPopup ? 'blur-xs brightness-20' : ''}`}
       >
-        <div className="flex flex-col items-center justify-center pt-8 space-y-4 mx-6 overflow-hidden">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#54E794FF] tracking-tight">
+        <div className="flex flex-col items-center justify-center pt-8 space-y-8 mx-6 overflow-hidden">
+          <h1 className="text-4xl md:text-5xl font-bold text-emerald-200 tracking-tight">
             {object.title}
           </h1>
-          <div className="w-24 h-1 bg-[#54E794FF] rounded-full mb-4" />
-          <p className="text-lg md:text-xl max-w-2xl mb-8 text-zinc-200 italic">
+          <p className="text-lg md:text-xl max-w-2xl text-zinc-200 italic mb-4">
             {object.description}
           </p>
         </div>
