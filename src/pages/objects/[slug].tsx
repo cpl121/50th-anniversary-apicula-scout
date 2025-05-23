@@ -89,11 +89,7 @@ const Button = ({ text, onClickButton }: ButtonProps) => {
   );
 };
 
-const Popup = ({
-  setShowPopup,
-}: {
-  setShowPopup: (value: boolean) => void;
-}) => {
+const Popup = ({ setShowPopup }: { setShowPopup: (value: boolean) => void }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none h-full">
       <div className="w-full h-fit max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
@@ -101,24 +97,24 @@ const Popup = ({
           Explora en Realidad Aumentada
         </h1>
         <div className="h-px w-full bg-white/50 my-6" />
-          <div className="flex flex-col space-y-8 justify-center items-center">
-            <p className="text-lg text-gray-300">
-              Busca este icono en tu pantalla y haz click en él para entrar en la Realidad Aumentada.
-            </p>
-            <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
-              <Image
-                src="/images/realidad-aumentada.svg"
-                alt="Realidad aumentada"
-                width={20}
-                height={20}
-              />
-            </div>
-            <br />
-            <p className="text-lg text-gray-300">
-            ⚠️ Si no ves el icono es porque tu móvil no permite su acceso. 
-              Intentad entrar con otro móvil.
-            </p>
+        <div className="flex flex-col space-y-8 justify-center items-center">
+          <p className="text-lg text-gray-300">
+            Busca este icono en tu pantalla y haz click en él para entrar en la Realidad Aumentada.
+          </p>
+          <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
+            <Image
+              src="/images/realidad-aumentada.svg"
+              alt="Realidad aumentada"
+              width={20}
+              height={20}
+            />
           </div>
+          <br />
+          <p className="text-lg text-gray-300">
+            ⚠️ Si no ves el icono es porque tu móvil no permite su acceso. Intentad entrar con otro
+            móvil.
+          </p>
+        </div>
         <div className="w-full">
           <div className="h-px w-full bg-white/50 my-6" />
           <div className="w-full">

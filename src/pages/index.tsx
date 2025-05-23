@@ -156,40 +156,44 @@ export default function Home() {
       <section className="bg-emerald-100 py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-row justify-between items-center">
-            <div className='flex flex-col break-all space-y-16 md:space-y-4 pl-8'>
-              <span className='text-7xl tracking-wider italic font-serif md:indent-10 text-green-800 text-clip overflow-hidden font-extrabold'>Siempre</span>
-              <span className='text-7xl tracking-wider italic font-serif text-green-800 text-clip overflow-hidden font-extrabold'>Listos</span>
+            <div className="flex flex-col break-all space-y-16 md:space-y-4 pl-8">
+              <span className="text-7xl tracking-wider italic font-serif md:indent-10 text-green-800 text-clip overflow-hidden font-extrabold">
+                Siempre
+              </span>
+              <span className="text-7xl tracking-wider italic font-serif text-green-800 text-clip overflow-hidden font-extrabold">
+                Listos
+              </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-2">
               <div className="flex flex-col items-center">
                 <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
                   <Image src="/images/neckerchief.svg" alt="Neckerchief" width={20} height={20} />
                 </div>
-                </div>
+              </div>
 
               <div className="flex flex-col items-center">
                 <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
                   <Flame className="h-8 w-8 text-brown-600" />
                 </div>
-                </div>
+              </div>
 
               <div className="flex flex-col items-center">
                 <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
                   <Image src="/images/flor-de-lis.svg" alt="Fleur-de-lis" width={40} height={40} />
                 </div>
-                </div>
+              </div>
 
               <div className="flex flex-col items-center">
                 <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
                   <Image src="/images/bee.svg" alt="Bee" width={40} height={40} />
                 </div>
-                </div>
+              </div>
 
               <div className="flex flex-col items-center">
                 <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
                   <Globe2 className="h-8 w-8" />
                 </div>
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -206,11 +210,11 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-emerald-200">Hecho con</span>
-              <Flame className="h-4 w-4 text-brown-600" color='aquamarine' />
+              <Flame className="h-4 w-4 text-brown-600" color="aquamarine" />
               <span className="text-sm text-emerald-200">y espíritu scout</span>
             </div>
-            <div className='flex flex-row space-x-2'>
-              <span className='text-emerald-200'>Desarrollado por</span>
+            <div className="flex flex-row space-x-2">
+              <span className="text-emerald-200">Desarrollado por</span>
               <a
                 className="hover:underline hover:underline-offset-4 hover:text-emerald-200"
                 href="https://www.linkedin.com/in/c%C3%A9sar-pe%C3%B3n-lamparero/"

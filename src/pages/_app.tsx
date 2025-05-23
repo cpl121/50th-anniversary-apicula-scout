@@ -21,10 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Script
         async
-        strategy='afterInteractive'
-        type='module'
+        strategy="afterInteractive"
+        type="module"
         // 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
-        src='https://unpkg.com/@google/model-viewer@^2.1.1/dist/model-viewer.min.js'
+        src="https://unpkg.com/@google/model-viewer@^2.1.1/dist/model-viewer.min.js"
       />
       <div className={`${inter.variable} ${playfair.variable} font-sans scroll-smooth`}>
         <Component {...pageProps} />
