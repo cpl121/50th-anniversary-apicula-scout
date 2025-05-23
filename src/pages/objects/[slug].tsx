@@ -91,21 +91,19 @@ const Button = ({ text, onClickButton }: ButtonProps) => {
 
 const Popup = ({
   setShowPopup,
-  supportsAR,
 }: {
   setShowPopup: (value: boolean) => void;
-  supportsAR: boolean;
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none h-full">
-      <div className="w-full h-[60%] max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
+      <div className="w-full h-fit max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
         <h1 className="text-2xl md:text-3xl font-semibold text-center">
           Explora en Realidad Aumentada
         </h1>
-        {supportsAR ? (
+        <div className="h-px w-full bg-white/50 my-6" />
           <div className="flex flex-col space-y-8 justify-center items-center">
             <p className="text-lg text-gray-300">
-              Pulsa en el siguiente icono para entrar en modo de Realidad Aumentada (RA).
+              Pulsa en el siguiente icono para entrar en la Realidad Aumentada.
             </p>
             <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
               <Image
@@ -115,14 +113,13 @@ const Popup = ({
                 height={20}
               />
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col space-y-8 justify-center items-center">
+            <br />
             <p className="text-lg text-gray-300">
-              Tu movil no permite entrar en la realidad aumentada, solo podras ver el objeto 3D. Intentad entrar con otro movil.
+              Si no ves el icono es porque tu móvil no permite su acceso. 
+              <br />
+              Intentad entrar con otro movil.
             </p>
           </div>
-        )}
         <div className="w-full">
           <div className="h-px w-full bg-white/50 my-6" />
           <div className="w-full">
@@ -137,47 +134,20 @@ const Popup = ({
 const ObjectPage: NextPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const [supportsAR, setSupportsAR] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
 
   const parsedSlug = Array.isArray(slug) ? slug[0] : slug;
   const object = parsedSlug ? objects[parsedSlug] : undefined;
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (typeof window !== 'undefined' && (navigator as any)?.isSessionSupported) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (navigator as any)
-        .isSessionSupported('immersive-ar')
-        .then((supported: boolean) => {
-          setSupportsAR(supported);
-        })
-        .catch(() => {
-          setSupportsAR(false);
-        });
-    } else {
-      setSupportsAR(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!supportsAR && typeof window !== 'undefined' && !customElements.get('model-viewer')) {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
-      document.head.appendChild(script);
-    }
-  }, [supportsAR]);
-
   if (!object) return <p>No existe el objeto</p>;
 
   return (
     <>
-      {showPopup && <Popup setShowPopup={setShowPopup} supportsAR={supportsAR} />}
+      {showPopup && <Popup setShowPopup={setShowPopup} />}
       <div
         className={`flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center ${showPopup ? 'blur-xs brightness-20' : ''}`}
       >
-        <div className="flex flex-col items-center justify-center mt-8 space-y-4 mx-4 overflow-hidden">
+        <div className="flex flex-col items-center justify-center pt-8 space-y-4 mx-6 overflow-hidden">
           <h1 className="text-4xl md:text-5xl font-bold text-[#54E794FF] tracking-tight">
             {object.title}
           </h1>
