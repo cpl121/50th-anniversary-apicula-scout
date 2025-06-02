@@ -82,12 +82,12 @@ export default function Home() {
               interactivo
             </p>
 
-            <button
+            {/* <button
               onClick={() => handleClick('objects')}
               className="mt-8 group cursor-pointer relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/70"
             >
               <span className="relative">Ver objetos legendarios →</span>
-            </button>
+            </button> */}
           </div>
         </div>
 
