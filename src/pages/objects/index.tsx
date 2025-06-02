@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import SHA256 from "crypto-js/sha256"
+import SHA256 from 'crypto-js/sha256';
 
-const HASH = "b4b53da1ab7fc52e477e160a321a39be4d65640ab2df31db7a06d79b04fb92c2"
+const HASH = 'b4b53da1ab7fc52e477e160a321a39be4d65640ab2df31db7a06d79b04fb92c2';
 
 const objetos = [
   {
@@ -57,16 +57,22 @@ const objetos = [
   },
 ];
 
-const Popup = ({ setShowPopup, setShowObjects }: { setShowPopup: (value: boolean) => void; setShowObjects: (value: boolean) => void; }) => {
+const Popup = ({
+  setShowPopup,
+  setShowObjects,
+}: {
+  setShowPopup: (value: boolean) => void;
+  setShowObjects: (value: boolean) => void;
+}) => {
   const [value, setValue] = useState('');
 
   const onClickButton = () => {
-    const hashed = SHA256(value).toString()
+    const hashed = SHA256(value).toString();
     if (hashed === HASH) {
-      setShowPopup(false)
-      setShowObjects(true)
+      setShowPopup(false);
+      setShowObjects(true);
     }
-  }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center h-full">
@@ -90,14 +96,14 @@ const Popup = ({ setShowPopup, setShowObjects }: { setShowPopup: (value: boolean
         <div className="w-full">
           <div className="h-px w-full bg-white/50 my-6" />
           <div className="w-full">
-          <button
-            disabled={!value.trim()}
-            onClick={onClickButton}
-            className={`text-md p-4 rounded w-full h-full text-white transition
+            <button
+              disabled={!value.trim()}
+              onClick={onClickButton}
+              className={`text-md p-4 rounded w-full h-full text-white transition
               ${value.trim() ? 'bg-white/10 hover:bg-white/20 cursor-pointer' : 'bg-white/5 cursor-not-allowed'}`}
-          >
-            Comprobar contraseña
-          </button>
+            >
+              Comprobar contraseña
+            </button>
           </div>
         </div>
       </div>
@@ -106,13 +112,15 @@ const Popup = ({ setShowPopup, setShowObjects }: { setShowPopup: (value: boolean
 };
 
 const ObjectsIndex = () => {
-  const [showObjects, setShowObjects] = useState(false)
+  const [showObjects, setShowObjects] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
 
   return (
     <>
       {showPopup && <Popup setShowPopup={setShowPopup} setShowObjects={setShowObjects} />}
-      <div className={`${showObjects ? '' : 'blur-2xl'} min-h-screen bg-zinc-900 text-white py-20 px-6 space-y-12 md:space-y-20`}>
+      <div
+        className={`${showObjects ? '' : 'blur-2xl'} min-h-screen bg-zinc-900 text-white py-20 px-6 space-y-12 md:space-y-20`}
+      >
         <h1 className="text-4xl font-bold text-center">🌟 Objetos legendarios 🌟</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {objetos.map((objeto) => (
