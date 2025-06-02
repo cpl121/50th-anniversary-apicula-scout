@@ -3,11 +3,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Tent, Flame, Users, Sparkles, Globe2 } from 'lucide-react';
-import { useRouter } from 'next/router';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +15,6 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleClick = (path: string) => {
-    router.push(path);
-  };
 
   return (
     <main className="relative flex min-h-screen flex-col bg-white">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import Image from 'next/image';
@@ -24,7 +24,8 @@ const objects: Record<string, Object> = {
   },
   compass: {
     title: '🧭 Tu brújula interior',
-    description: 'No te indicó el norte, te mostró el camino. El que elegiste, el que sigues, el que te hace scout.',
+    description:
+      'No te indicó el norte, te mostró el camino. El que elegiste, el que sigues, el que te hace scout.',
     glbModel: '/assets/compass/compass.glb',
     iosModel: '/assets/compass/compass.usdz',
   },
@@ -91,9 +92,9 @@ const Button = ({ text, onClickButton }: ButtonProps) => {
 
 const Popup = ({ setClosePopup }: { setClosePopup: (value: boolean) => void }) => {
   const onClickButton = () => {
-    setClosePopup(true)
-    localStorage.setItem('popupUnlocked', 'true')
-  }
+    setClosePopup(true);
+    localStorage.setItem('popupUnlocked', 'true');
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none h-full">
@@ -104,7 +105,8 @@ const Popup = ({ setClosePopup }: { setClosePopup: (value: boolean) => void }) =
         <div className="h-px w-full bg-white/50 my-6" />
         <div className="flex flex-col space-y-8 justify-center items-center">
           <p className="text-lg text-gray-300 text-center">
-            Busca un icono como este en la pantalla y haz click en él para entrar en la Realidad Aumentada y asi poder escanear el entorno y hacer una foto con el objeto.
+            Busca un icono como este en la pantalla y haz click en él para entrar en la Realidad
+            Aumentada y asi poder escanear el entorno y hacer una foto con el objeto.
           </p>
           <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-2 shadow-sm">
             <Image
@@ -116,8 +118,8 @@ const Popup = ({ setClosePopup }: { setClosePopup: (value: boolean) => void }) =
           </div>
           <br />
           <p className="text-lg text-gray-300 text-center">
-            ⚠️ Si no ves el icono, o lo pulsas y no ocurre nada, es porque tu móvil no permite su acceso. Intentalo con otro
-            móvil ⚠️
+            ⚠️ Si no ves el icono, o lo pulsas y no ocurre nada, es porque tu móvil no permite su
+            acceso. Intentalo con otro móvil ⚠️
           </p>
         </div>
         <div className="w-full">
@@ -135,12 +137,12 @@ const ObjectPage: NextPage = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [closePopup, setClosePopup] = useState(false);
-  
-  let showPopup
 
-  if (typeof window !== "undefined") {
-    showPopup = localStorage.getItem("popupUnlocked") || ''
-  }  
+  let showPopup;
+
+  if (typeof window !== 'undefined') {
+    showPopup = localStorage.getItem('popupUnlocked') || '';
+  }
 
   const parsedSlug = Array.isArray(slug) ? slug[0] : slug;
   const object = parsedSlug ? objects[parsedSlug] : undefined;
@@ -149,13 +151,17 @@ const ObjectPage: NextPage = () => {
 
   return (
     <>
-      {(!showPopup && !closePopup) && <Popup setClosePopup={setClosePopup} />}
+      {!showPopup && !closePopup && <Popup setClosePopup={setClosePopup} />}
       <div
-        className={`flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center ${(!showPopup && !closePopup) ? 'blur-xs brightness-20' : ''}`}
+        className={`flex flex-col items-center h-screen w-screen overflow-hidden bg-zinc-900 text-center ${!showPopup && !closePopup ? 'blur-xs brightness-20' : ''}`}
       >
         <div className="flex flex-col flex-none items-center justify-center pt-8 space-y-8 mx-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-emerald-200 tracking-tight">{object.title}</h1>
-          <p className="text-lg md:text-xl max-w-2xl text-zinc-200 italic mb-4">{object.description}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-emerald-200 tracking-tight">
+            {object.title}
+          </h1>
+          <p className="text-lg md:text-xl max-w-2xl text-zinc-200 italic mb-4">
+            {object.description}
+          </p>
         </div>
         <div className="flex-1 w-full">
           {React.createElement('model-viewer', {
