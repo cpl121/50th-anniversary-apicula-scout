@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Tent, Flame, Users, Sparkles, Globe2 } from 'lucide-react';
+import ParallaxObjects from '@/components/ParallaxObjects';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col bg-white">
+      <ParallaxObjects />
       {/* Hero Section with Parallax */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Parallax Background Layers */}
