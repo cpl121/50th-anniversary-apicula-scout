@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://50th-anniversary-apicula-scout.vercel.app/
+
+# Sitemaps
+Sitemap: https://50th-anniversary-apicula-scout.vercel.app/sitemap.xml

@@ -1,6 +1,6 @@
 # 🌲 50º Aniversario Scout – Experiencia RA de Objetos Legendarios
 
-Este proyecto es una experiencia web en realidad aumentada (RA) creada para el 50º aniversario del grupo scout Apicula. Mediante códigos QR repartidos por la zona de acampada, los participantes pueden descubrir objetos 3D simbólicos cargados de historia y valores del escultismo.
+Este proyecto es una experiencia web en realidad aumentada (RA) creada para el 50º aniversario del grupo scout Apícula. Mediante códigos QR repartidos por la zona de acampada, los participantes pueden descubrir objetos 3D simbólicos cargados de historia y valores del escultismo.
 
 ## 🔍 ¿Qué es esto?
 
