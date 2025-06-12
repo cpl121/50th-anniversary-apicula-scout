@@ -13,10 +13,22 @@ const ITEMS: ParallaxItem[] = [
   { src: '/assets/canteen/canteen.glb', className: 'left-2/3 top-[30rem] h-20 w-20', speed: 0.15 },
   { src: '/assets/horn/horn.glb', className: 'left-20 top-[40rem] h-16 w-16', speed: 0.1 },
   { src: '/assets/axe/axe.glb', className: 'right-20 top-[50rem] h-20 w-20', speed: 0.2 },
-  { src: '/assets/campfire/campfire.glb', className: 'left-1/4 top-[65rem] h-20 w-20', speed: 0.18 },
-  { src: '/assets/fleur-de-lis/fleur-de-lis.glb', className: 'left-1/2 top-[75rem] h-20 w-20', speed: 0.07 },
+  {
+    src: '/assets/campfire/campfire.glb',
+    className: 'left-1/4 top-[65rem] h-20 w-20',
+    speed: 0.18,
+  },
+  {
+    src: '/assets/fleur-de-lis/fleur-de-lis.glb',
+    className: 'left-1/2 top-[75rem] h-20 w-20',
+    speed: 0.07,
+  },
   { src: '/assets/hat/hat.glb', className: 'right-1/3 top-[85rem] h-20 w-20', speed: 0.13 },
-  { src: '/assets/neckerchief/neckerchief.glb', className: 'left-[5%] top-[95rem] h-20 w-20', speed: 0.16 },
+  {
+    src: '/assets/neckerchief/neckerchief.glb',
+    className: 'left-[5%] top-[95rem] h-20 w-20',
+    speed: 0.16,
+  },
 ];
 
 const ParallaxObjects: React.FC = () => {
@@ -38,7 +50,7 @@ const ParallaxObjects: React.FC = () => {
           'auto-rotate': true,
           className: `absolute ${item.className}`,
           style: { transform: `translateY(${scrollY * item.speed}px)` },
-        })
+        }),
       )}
     </div>
   );
