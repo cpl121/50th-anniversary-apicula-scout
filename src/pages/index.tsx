@@ -114,7 +114,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-                <div className='rounded-lg backdrop-blur-md px-5 py-2 shadow-lg'>
+                <div className="rounded-lg backdrop-blur-md px-5 py-2 shadow-lg">
                   <h2 className="mb-6 font-serif text-3xl font-bold text-green-800 md:text-4xl">
                     Nuestra Historia
                   </h2>
@@ -476,9 +476,7 @@ export default function Home() {
                       <Tent className="h-10 w-10 text-black" />
                     </div>
                     <h3 className="text-center text-base font-semibold text-green-800">Tienda</h3>
-                    <p className="mt-2 text-center text-sm text-gray-700">
-                      Hogar en la naturaleza
-                    </p>
+                    <p className="mt-2 text-center text-sm text-gray-700">Hogar en la naturaleza</p>
                   </div>
                 </div>
 
@@ -497,9 +495,7 @@ export default function Home() {
                     <h3 className="text-center text-base font-semibold text-green-800">
                       Flor de Lis
                     </h3>
-                    <p className="mt-2 text-center text-sm text-gray-700">
-                      Guía en nuestro camino
-                    </p>
+                    <p className="mt-2 text-center text-sm text-gray-700">Guía en nuestro camino</p>
                   </div>
                 </div>
 
