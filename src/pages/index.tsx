@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Tent, Flame, Users, Sparkles, Star, Calendar, MapPin, Heart } from 'lucide-react';
+import { Tent, Flame, Users, Sparkles, Calendar, MapPin, Heart } from 'lucide-react';
 import { Scene } from '@/components';
 import { useRouter } from 'next/router';
 
@@ -157,11 +157,6 @@ export default function Home() {
 
         {/* Values Section */}
         <section className="relative py-32">
-          {/* Subtle Honeycomb Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="h-full w-full bg-[url('/placeholder.svg?height=200&width=200')] bg-repeat"></div>
-          </div>
-
           <div className="container relative z-10 mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <h2 className="mb-12 text-center font-serif text-3xl font-bold text-green-800 md:text-4xl">
@@ -284,8 +279,45 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Gallery Section */}
+        {/* Testimonials Section */}
         <section className="py-32">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="mb-12 text-center font-serif text-3xl font-bold text-green-800 md:text-4xl">
+                Juego Antiguos responsables
+              </h2>
+
+              <div className="grid grid-cols-1 space-x-12 md:grid-cols-2">
+                <div className="rounded-lg p-6 shadow-md backdrop-blur-lg">
+                  <span className="mb-4 flex text-green-900 text-xl font-bold">
+                    Encuentra. Escanea. Recuerda.
+                  </span>
+                  <p className="mb-4 text-green-800 text-lg">
+                    Encuentra el código QR escondido por la zona de acampada, escanealo y descubre
+                    el objeto en realidad aumentada, hazte una foto con tu equipo… y gana el objeto
+                    real impreso en 3D como recompensa. Cada objeto cuenta una historia. Cada
+                    historia, un recuerdo compartido.
+                  </p>
+                </div>
+
+                <div className="rounded-lg p-6 shadow-md backdrop-blur-lg">
+                  <span className="mb-4 flex text-green-900 text-xl font-bold">
+                    Tecnología al servicio del recuerdo
+                  </span>
+                  <p className="mb-4 text-green-800 text-lg">
+                    Creamos esta experiencia usando realidad aumentada y diseño 3D. Escanea los
+                    objetos desde el móvil, interactúa con ellos y, si completas el reto, recibirás
+                    tu versión física impresa. Un puente entre lo digital y lo tangible, hecho para
+                    celebrar nuestros 50 años.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Section */}
+        <section className="bg-green-50/80 py-32">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-6xl">
               <h2 className="mb-12 text-center font-serif text-3xl font-bold text-green-800 md:text-4xl">
@@ -293,59 +325,88 @@ export default function Home() {
               </h2>
 
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <div className="relative aspect-square overflow-hidden rounded-lg md:col-span-2 md:row-span-2">
+                {/* 1. Tiendas (span 2x2) */}
+                <div className="relative aspect-square overflow-hidden rounded-lg md:col-span-2 md:row-span-2 group">
                   <Image
                     src="/images/tent.jpeg"
                     alt="Campamento principal"
                     width={600}
                     height={600}
-                    className="h-full w-full object-cover brightness-125"
+                    className="h-full w-full object-cover brightness-125 transform transition-transform duration-500 ease-out group-hover:scale-120"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg font-bold">Tienda de campaña</h3>
-                    <p className="text-sm opacity-90">Primera impresión en 3D</p>
+                  {/* overlay */}
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-75" />
+                  {/* texto */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <h3 className="text-white text-lg font-bold">Tiendas de campaña</h3>
+                    <p className="text-white text-sm opacity-90 mt-1">Campamento en miniatura</p>
                   </div>
                 </div>
 
-                <div className="relative aspect-square overflow-hidden rounded-lg">
+                {/* 2. Abeja (object-bottom) */}
+                <div className="relative aspect-square overflow-hidden rounded-lg group">
                   <Image
                     src="/images/bee.jpeg"
-                    alt="Campamento principal"
+                    alt="Abeja en flor"
                     width={600}
                     height={600}
-                    className="h-full w-full object-cover object-bottom"
+                    className="h-full w-full object-cover object-bottom transform transition-transform duration-500 ease-out group-hover:scale-120"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-75" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <h3 className="text-white text-lg font-bold">Logo del grupo</h3>
+                    <p className="text-white text-sm opacity-90 mt-1">
+                      Icono de los scouts y de Apicula
+                    </p>
+                  </div>
                 </div>
 
-                <div className="relative aspect-square overflow-hidden rounded-lg">
+                {/* 3. Brújula (brightness-90, object-bottom) */}
+                <div className="relative aspect-square overflow-hidden rounded-lg group">
                   <Image
                     src="/images/compass.jpeg"
-                    alt="Campamento principal"
+                    alt="Brújula Scout"
                     width={600}
                     height={600}
-                    className="h-full w-full object-cover brightness-90 object-bottom"
+                    className="h-full w-full object-cover brightness-90 object-bottom transform transition-transform duration-500 ease-out group-hover:scale-120"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-75" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <h3 className="text-white text-lg font-bold">Brújula Scout</h3>
+                    <p className="text-white text-sm opacity-90 mt-1">Rumbo al norte</p>
+                  </div>
                 </div>
 
-                <div className="relative aspect-square overflow-hidden rounded-lg">
+                {/* 4. Hoguera (brightness-90, object-[10%_75%]) */}
+                <div className="relative aspect-square overflow-hidden rounded-lg group">
                   <Image
                     src="/images/hogueraScout.jpeg"
-                    alt="Campamento principal"
+                    alt="Hoguera Scout"
                     width={600}
                     height={600}
-                    className="h-full w-full object-cover brightness-90 object-[10%_75%]"
+                    className="h-full w-full object-cover brightness-90 object-[10%_75%] transform transition-transform duration-500 ease-out group-hover:scale-120"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-75" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <h3 className="text-white text-lg font-bold">Hoguera nocturna</h3>
+                    <p className="text-white text-sm opacity-90 mt-1">Bajo las estrellas</p>
+                  </div>
                 </div>
 
-                <div className="relative aspect-square overflow-hidden rounded-lg">
+                {/* 5. Pasador (brightness-90, object-[20%_65%]) */}
+                <div className="relative aspect-square overflow-hidden rounded-lg group">
                   <Image
                     src="/images/pasador.jpeg"
-                    alt="Campamento principal"
+                    alt="Pasador de campamento"
                     width={600}
                     height={600}
-                    className="h-full w-full object-cover brightness-90 object-[20%_65%]"
+                    className="h-full w-full object-cover brightness-90 object-[20%_65%] transform transition-transform duration-500 ease-out group-hover:scale-120"
                   />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-75" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
+                    <h3 className="text-white text-lg font-bold">Pasador de campamento</h3>
+                    <p className="text-white text-sm opacity-90 mt-1">Detalle en madera</p>
+                  </div>
                 </div>
               </div>
 
@@ -364,81 +425,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="bg-green-50/80 py-32">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-4xl">
-              <h2 className="mb-12 text-center font-serif text-3xl font-bold text-green-800 md:text-4xl">
-                Voces de nuestra comunidad
-              </h2>
-
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                <div className="rounded-lg  p-6 shadow-md">
-                  <div className="mb-4 flex text-green-600">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-current" />
-                    ))}
-                  </div>
-                  <p className="mb-4 text-green-700">
-                    Apicula no solo me enseñó habilidades de supervivencia, sino que me dio una
-                    familia para toda la vida. Los valores que aprendí aquí me han guiado en mi
-                    carrera profesional y personal.
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 overflow-hidden rounded-full bg-green-100">
-                      <Image
-                        src="/placeholder.svg?height=40&width=40"
-                        alt="María González"
-                        width={40}
-                        height={40}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-green-800">María González</div>
-                      <div className="text-sm text-green-600">Scout 1995-2001</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-lg  p-6 shadow-md">
-                  <div className="mb-4 flex text-green-600">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-current" />
-                    ))}
-                  </div>
-                  <p className="mb-4 text-green-700">
-                    Como padre, ver crecer a mi hijo en Apicula ha sido increíble. La confianza, el
-                    liderazgo y la responsabilidad que ha desarrollado son invaluables.
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 overflow-hidden rounded-full bg-green-100">
-                      <Image
-                        src="/placeholder.svg?height=40&width=40"
-                        alt="Carlos Mendoza"
-                        width={40}
-                        height={40}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-green-800">Carlos Mendoza</div>
-                      <div className="text-sm text-green-600">Padre de familia</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Scout Elements Section - Redesigned */}
         <section className="relative py-32">
-          {/* Subtle Texture Background */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="h-full w-full bg-[url('/placeholder.svg?height=100&width=100')] bg-repeat"></div>
-          </div>
-
           <div className="container relative z-10 mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <h2 className="mb-10 text-center font-serif text-3xl font-bold text-green-800 md:text-4xl">
@@ -618,7 +606,7 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-52">
+        <section className="py-48">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="mb-6 font-serif text-3xl font-bold text-green-800 md:text-4xl">
