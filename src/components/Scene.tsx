@@ -50,7 +50,7 @@ const SideModel: React.FC<SideModelProps> = ({
     const x = side * (2 + extraDistance);
     const y = -index * objectsDistance;
     return new THREE.Vector3(x, y, 0);
-  }, [index, objectsDistance, side]);
+  }, [index, objectsDistance, side, extraDistance]);
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
