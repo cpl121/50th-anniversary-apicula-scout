@@ -6,9 +6,9 @@ import { Tent, Flame, Users, Sparkles, Calendar, MapPin, Heart } from 'lucide-re
 import { Scene } from '@/components';
 import { useRouter } from 'next/router';
 
-const APICULA_URL = 'https://apiculamsc.com/';
-const APICULA_URL_INSTAGRAM = 'https://www.instagram.com/apiculamsc/';
-const APICULA_URL_CONTACT = 'https://apiculamsc.com/contacto/';
+const Apícula_URL = 'https://Apículamsc.com/';
+const Apícula_URL_INSTAGRAM = 'https://www.instagram.com/Apículamsc/';
+const Apícula_URL_CONTACT = 'https://Apículamsc.com/contacto/';
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
@@ -25,15 +25,15 @@ export default function Home() {
   function clickObjects() {
     router.push('/objects');
   }
-  const clickApiculaWeb = useCallback(() => {
-    window.open(APICULA_URL, '_blank', 'noopener,noreferrer');
+  const clickApículaWeb = useCallback(() => {
+    window.open(Apícula_URL, '_blank', 'noopener,noreferrer');
   }, []);
 
-  const clickApiculaInstagram = useCallback(() => {
-    window.open(APICULA_URL_INSTAGRAM, '_blank', 'noopener,noreferrer');
+  const clickApículaInstagram = useCallback(() => {
+    window.open(Apícula_URL_INSTAGRAM, '_blank', 'noopener,noreferrer');
   }, []);
-  const clickApiculaContact = useCallback(() => {
-    window.open(APICULA_URL_CONTACT, '_blank', 'noopener,noreferrer');
+  const clickApículaContact = useCallback(() => {
+    window.open(Apícula_URL_CONTACT, '_blank', 'noopener,noreferrer');
   }, []);
 
   return (
@@ -57,12 +57,12 @@ export default function Home() {
               </div>
 
               <h1 className="mb-4 font-serif text-5xl font-bold text-green-800 md:text-7xl">
-                50 años de <span className="block italic">Apicula</span>
+                50 años de <span className="block italic">Apícula</span>
               </h1>
 
-              <p className="mb-8 text-lg text-green-900/90 md:text-xl">
+              <p className="mb-8 text-lg text-green-900/90 md:text-xl mt-16 mx-32">
                 Explora medio siglo de aventuras, amistad y servicio a través de nuestro juego
-                interactivo
+                interactivo.
               </p>
             </div>
           </div>
@@ -114,24 +114,24 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-                <div>
+                <div className='rounded-lg backdrop-blur-md px-5 py-2 shadow-lg'>
                   <h2 className="mb-6 font-serif text-3xl font-bold text-green-800 md:text-4xl">
                     Nuestra Historia
                   </h2>
-                  <p className="mb-4 text-green-900 font-semibold">
-                    Desde 1975, el Grupo Scout Apicula ha sido un faro de aventura y crecimiento
+                  <p className="mb-4 text-gray-700">
+                    Desde 1975, el Grupo Scout Apícula ha sido un faro de aventura y crecimiento
                     personal en nuestra comunidad. Fundado por un grupo de visionarios que creían en
                     el poder transformador del escultismo, hemos crecido hasta convertirnos en una
                     familia de más de 1,200 scouts.
                   </p>
-                  <p className="mb-6 text-green-900 font-semibold">
+                  <p className="mb-6 text-gray-700">
                     Como las abejas que inspiran nuestro nombre, trabajamos juntos para construir
                     algo más grande que nosotros mismos: una comunidad donde cada joven puede
                     descubrir su potencial y contribuir al mundo.
                   </p>
                   <button
-                    className="rounded-full cursor-pointer bg-green-800/90 px-6 py-3 font-medium text-white transition-colors hover:bg-green-800/90"
-                    onClick={clickApiculaWeb}
+                    className="rounded-full w-full cursor-pointer bg-green-700 px-8 py-3 font-medium text-white transition-colors hover:bg-green-800/80"
+                    onClick={clickApículaWeb}
                   >
                     Conoce más sobre nosotros
                   </button>
@@ -165,35 +165,35 @@ export default function Home() {
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                 {/* Aventura */}
-                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm">
+                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm shadow-lg">
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-50 shadow-md transition-all group-hover:shadow-lg">
                     <Tent className="h-10 w-10 text-green-700" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-green-800">Aventura</h3>
-                  <p className="text-center text-green-900 font-semibold">
+                  <p className="text-center text-gray-700">
                     Exploramos nuevos horizontes y abrazamos los desafíos con valentía y entusiasmo
                   </p>
                 </div>
 
                 {/* Creatividad */}
-                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm">
+                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm shadow-lg">
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-50 shadow-md transition-all group-hover:shadow-lg">
                     <Sparkles className="h-10 w-10 text-green-700" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-green-800">Creatividad</h3>
-                  <p className="text-center text-green-900 font-semibold">
+                  <p className="text-center text-gray-700">
                     Fomentamos la imaginación y la innovación para resolver problemas y crear
                     experiencias únicas
                   </p>
                 </div>
 
                 {/* Comunidad */}
-                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm">
+                <div className="group flex flex-col items-center rounded-lg p-6 transition-all hover:-translate-y-1 backdrop-blur-sm shadow-lg">
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-50 shadow-md transition-all group-hover:shadow-lg">
                     <Users className="h-10 w-10 text-green-700" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-green-800">Comunidad</h3>
-                  <p className="text-center text-green-900 font-semibold">
+                  <p className="text-center text-gray-700">
                     Construimos lazos fuertes basados en el respeto, la colaboración y el servicio a
                     los demás
                   </p>
@@ -204,7 +204,7 @@ export default function Home() {
         </section>
 
         {/* Timeline Section */}
-        <section className="bg-green-800/50 py-20">
+        <section className="bg-green-800/40 py-20">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl">
               <h2 className="mb-12 text-center font-serif text-3xl font-bold text-white md:text-4xl">
@@ -213,7 +213,7 @@ export default function Home() {
 
               <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute left-4 top-0 h-full w-0.5 bg-green-200 md:left-1/2"></div>
+                <div className="absolute left-4 top-0 h-full w-0.5 bg-white md:left-1/2"></div>
 
                 {/* Timeline Items */}
                 <div className="space-y-12">
@@ -221,7 +221,7 @@ export default function Home() {
                     <div className="ml-12 rounded-lg bg-green-800/90  p-6 shadow-md md:ml-0 md:mr-12 md:w-5/12">
                       <div className="mb-2 text-sm font-semibold text-green-50">1975</div>
                       <h3 className="mb-2 text-lg font-bold text-white">Fundación del Grupo</h3>
-                      <p className="text-white">
+                      <p className="text-[#FAFAFA]">
                         La historia apícola scout se remonta a 1975, cuando un grupo de scouts de
                         Guadalajara, España, que habían formado parte de un grupo scout previo que
                         se había cerrado, fundaron el Grupo Scout Apícula.
@@ -236,7 +236,7 @@ export default function Home() {
                     <div className="ml-12 rounded-lg bg-green-800/90  p-6 shadow-md md:ml-12 md:w-5/12">
                       <div className="mb-2 text-sm font-semibold text-green-50">1977</div>
                       <h3 className="mb-2 text-lg font-bold text-white">Nombre del grupo</h3>
-                      <p className="text-white">
+                      <p className="text-[#FAFAFA]">
                         El nombre Apícula se adoptó en 1977, y el grupo se ha identificado con el
                         mundo apícola y la naturaleza desde entonces.
                       </p>
@@ -248,9 +248,9 @@ export default function Home() {
 
                   <div className="relative flex items-center md:justify-end">
                     <div className="ml-12 rounded-lg bg-green-800/90  p-6 shadow-md md:ml-0 md:mr-12 md:w-5/12">
-                      <div className="mb-2 text-sm font-semibold text-green-50">1999</div>
+                      <div className="mb-2 text-sm font-semibold text-green-50">2000</div>
                       <h3 className="mb-2 text-lg font-bold text-white">25 Años de Servicio</h3>
-                      <p className="text-white">
+                      <p className="text-[#FAFAFA]">
                         Celebramos nuestro primer cuarto de siglo con más de 500 scouts formados y
                         múltiples reconocimientos.
                       </p>
@@ -264,7 +264,7 @@ export default function Home() {
                     <div className="ml-12 rounded-lg bg-green-800/90 p-6 shadow-md md:ml-12 md:w-5/12">
                       <div className="mb-2 text-sm font-semibold text-green-50">2025</div>
                       <h3 className="mb-2 text-lg font-bold text-white">50 Años de Legado</h3>
-                      <p className="text-white">
+                      <p className="text-[#FAFAFA]">
                         Medio siglo de aventuras, conmemorandolos con una carrera popular y una
                         acampada reuniendo a todos los antiguos responsables.
                       </p>
@@ -292,24 +292,24 @@ export default function Home() {
                   <span className="mb-4 flex text-green-900 text-xl font-bold">
                     Encuentra. Escanea. Recuerda.
                   </span>
-                  <p className="mb-4 text-green-800 text-lg">
+                  <span className="text-center text-gray-700">
                     Encuentra el código QR escondido por la zona de acampada, escanealo y descubre
                     el objeto en realidad aumentada, hazte una foto con tu equipo… y gana el objeto
                     real impreso en 3D como recompensa. Cada objeto cuenta una historia. Cada
                     historia, un recuerdo compartido.
-                  </p>
+                  </span>
                 </div>
 
                 <div className="rounded-lg p-6 shadow-md backdrop-blur-lg">
                   <span className="mb-4 flex text-green-900 text-xl font-bold">
                     Tecnología al servicio del recuerdo
                   </span>
-                  <p className="mb-4 text-green-800 text-lg">
+                  <span className="text-center text-gray-700">
                     Creamos esta experiencia usando realidad aumentada y diseño 3D. Escanea los
                     objetos desde el móvil, interactúa con ellos y, si completas el reto, recibirás
                     tu versión física impresa. Un puente entre lo digital y lo tangible, hecho para
                     celebrar nuestros 50 años.
-                  </p>
+                  </span>
                 </div>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function Home() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
                     <h3 className="text-white text-lg font-bold">Logo del grupo</h3>
                     <p className="text-white text-sm opacity-90 mt-1">
-                      Icono de los scouts y de Apicula
+                      Icono de los scouts y de Apícula
                     </p>
                   </div>
                 </div>
@@ -410,9 +410,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-8 text-center">
+              <div className="mt-12 text-center">
                 <button
-                  className="group relative cursor-pointer inline-flex items-center justify-center overflow-hidden rounded-full bg-green-300 px-8 py-4 font-medium text-green-800 transition-all hover:bg-white/90"
+                  className="rounded-full cursor-pointer bg-green-700 px-8 py-3 font-medium text-white transition-colors hover:bg-green-800/80"
                   onClick={clickObjects}
                 >
                   <span className="relative">Ver todos los objetos legendarios</span>
@@ -448,7 +448,7 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-center text-base font-semibold text-green-800">Pañoleta</h3>
-                    <p className="mt-2 text-center text-xs text-green-600">
+                    <p className="mt-2 text-center text-sm text-gray-700">
                       Símbolo de identidad y pertenencia
                     </p>
                   </div>
@@ -462,7 +462,7 @@ export default function Home() {
                       <Flame className="h-10 w-10 text-brown-600" />
                     </div>
                     <h3 className="text-center text-base font-semibold text-green-800">Fogata</h3>
-                    <p className="mt-2 text-center text-xs text-green-600">
+                    <p className="mt-2 text-center text-sm text-gray-700">
                       Calor, luz y punto de reunión
                     </p>
                   </div>
@@ -476,7 +476,7 @@ export default function Home() {
                       <Tent className="h-10 w-10 text-black" />
                     </div>
                     <h3 className="text-center text-base font-semibold text-green-800">Tienda</h3>
-                    <p className="mt-2 text-center text-xs text-green-600">
+                    <p className="mt-2 text-center text-sm text-gray-700">
                       Hogar en la naturaleza
                     </p>
                   </div>
@@ -497,7 +497,7 @@ export default function Home() {
                     <h3 className="text-center text-base font-semibold text-green-800">
                       Flor de Lis
                     </h3>
-                    <p className="mt-2 text-center text-xs text-green-600">
+                    <p className="mt-2 text-center text-sm text-gray-700">
                       Guía en nuestro camino
                     </p>
                   </div>
@@ -511,7 +511,7 @@ export default function Home() {
                       <Image src="/images/bee.svg" alt="Bee Icon" width={40} height={40} />
                     </div>
                     <h3 className="text-center text-base font-semibold text-green-800">Abeja</h3>
-                    <p className="mt-2 text-center text-xs text-green-600">
+                    <p className="mt-2 text-center text-sm text-gray-700">
                       Trabajo en equipo y comunidad
                     </p>
                   </div>
@@ -547,7 +547,7 @@ export default function Home() {
                       organización que apoya a personas con discapacidad intelectual.
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-white">
+                  <div className="flex items-center gap-2 text-sm text-white mt-8">
                     <MapPin className="h-4 w-4" />
                     <span>Guadalajara</span>
                   </div>
@@ -564,7 +564,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="mb-2 text-lg font-bold text-white">
+                    <h3 className="mb-2 text-lg font-bold leading-6 text-white">
                       Acampada antiguos responsables
                     </h3>
                     <p className="mb-4 text-green-50">
@@ -572,7 +572,7 @@ export default function Home() {
                       experiencias y anécdotas.
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-white">
+                  <div className="flex items-center gap-2 text-sm text-white mt-8">
                     <MapPin className="h-4 w-4" />
                     <span>Mohernando, Guadalajara</span>
                   </div>
@@ -595,9 +595,9 @@ export default function Home() {
                       aniversario.
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-white">
+                  <div className="flex items-center gap-2 text-sm text-white mt-8">
                     <MapPin className="h-4 w-4" />
-                    <span>Aun por definir</span>
+                    <span>Aún por definir</span>
                   </div>
                 </div>
               </div>
@@ -606,26 +606,26 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-48">
-          <div className="container mx-auto px-4">
+        <section className="py-32">
+          <div className="container mx-auto shadow-lg backdrop-blur-md py-20 rounded-lg">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="mb-6 font-serif text-3xl font-bold text-green-800 md:text-4xl">
                 Únete a nuestra celebración
               </h2>
-              <p className="mb-8 text-lg text-green-700">
+              <p className="mb-8 text-lg text-gray-700">
                 Ya seas un ex-scout, padre de familia, o simplemente alguien que comparte nuestros
                 valores, te invitamos a ser parte de esta celebración histórica.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <button
                   className="rounded-full cursor-pointer bg-green-700 px-8 py-3 font-medium text-white transition-colors hover:bg-green-800/80"
-                  onClick={clickApiculaInstagram}
+                  onClick={clickApículaInstagram}
                 >
                   Mantente al día
                 </button>
                 <button
                   className="rounded-full cursor-pointer border-2 border-green-700 px-8 py-3 font-medium text-green-700 transition-colors hover:bg-green-50"
-                  onClick={clickApiculaContact}
+                  onClick={clickApículaContact}
                 >
                   Contactar al grupo
                 </button>
@@ -640,7 +640,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-between gap-4 border-t border-green-100 pt-8 text-center md:flex-row md:text-left">
               <div>
                 <p className="text-sm text-emerald-200">
-                  © {new Date().getFullYear()} Grupo Scout Apicula. 50 Aniversario.
+                  © {new Date().getFullYear()} Grupo Scout Apícula. 50 Aniversario.
                 </p>
               </div>
               <div className="flex items-center gap-2">
