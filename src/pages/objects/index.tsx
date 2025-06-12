@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import SHA256 from 'crypto-js/sha256';
+// import { useState } from 'react';
+// import SHA256 from 'crypto-js/sha256';
 
-const HASH = 'b4b53da1ab7fc52e477e160a321a39be4d65640ab2df31db7a06d79b04fb92c2';
+// const HASH = 'b4b53da1ab7fc52e477e160a321a39be4d65640ab2df31db7a06d79b04fb92c2'; // 513mpr3 L15t05
 
 const objetos = [
   {
@@ -57,67 +57,69 @@ const objetos = [
   },
 ];
 
-const Popup = ({
-  setShowPopup,
-  setShowObjects,
-}: {
-  setShowPopup: (value: boolean) => void;
-  setShowObjects: (value: boolean) => void;
-}) => {
-  const [value, setValue] = useState('');
+// Disabled after the game
+// const Popup = ({
+//   setShowPopup,
+//   setShowObjects,
+// }: {
+//   setShowPopup: (value: boolean) => void;
+//   setShowObjects: (value: boolean) => void;
+// }) => {
+//   const [value, setValue] = useState('');
 
-  const onClickButton = () => {
-    const hashed = SHA256(value).toString();
-    if (hashed === HASH) {
-      setShowPopup(false);
-      setShowObjects(true);
-    }
-  };
+//   const onClickButton = () => {
+//     const hashed = SHA256(value).toString();
+//     if (hashed === HASH) {
+//       setShowPopup(false);
+//       setShowObjects(true);
+//     }
+//   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center h-full">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0" />
-      <div className="w-full h-fit max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
-        <h1 className="text-2xl md:text-3xl font-semibold text-center">
-          Introduce el código secreto
-        </h1>
-        <div className="h-px w-full bg-white/50 my-6" />
-        <div className="flex flex-col space-y-8 justify-center items-center">
-          <span>Introduce el código secreto para acceder a los objetos</span>
-          <input
-            type="password"
-            name="password"
-            value={value}
-            autoFocus
-            onChange={(e) => setValue(e.target.value)}
-            className={`w-full px-4 py-2 bg-white/20 rounded-lg`}
-          />
-        </div>
-        <div className="w-full">
-          <div className="h-px w-full bg-white/50 my-6" />
-          <div className="w-full">
-            <button
-              disabled={!value.trim()}
-              onClick={onClickButton}
-              className={`text-md p-4 rounded w-full h-full text-white transition
-              ${value.trim() ? 'bg-white/10 hover:bg-white/20 cursor-pointer' : 'bg-white/5 cursor-not-allowed'}`}
-            >
-              Comprobar contraseña
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="fixed inset-0 z-50 flex items-center justify-center h-full">
+//       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0" />
+//       <div className="w-full h-fit max-w-md mx-4 p-6 rounded-xl bg-gray-900 border border-gray-700 text-white space-y-4 shadow-xl opacity-95 pointer-events-auto flex  flex-col items-center justify-between">
+//         <h1 className="text-2xl md:text-3xl font-semibold text-center">
+//           Introduce el código secreto
+//         </h1>
+//         <div className="h-px w-full bg-white/50 my-6" />
+//         <div className="flex flex-col space-y-8 justify-center items-center">
+//           <span>Introduce el código secreto para acceder a los objetos</span>
+//           <input
+//             type="password"
+//             name="password"
+//             value={value}
+//             autoFocus
+//             onChange={(e) => setValue(e.target.value)}
+//             className={`w-full px-4 py-2 bg-white/20 rounded-lg`}
+//           />
+//         </div>
+//         <div className="w-full">
+//           <div className="h-px w-full bg-white/50 my-6" />
+//           <div className="w-full">
+//             <button
+//               disabled={!value.trim()}
+//               onClick={onClickButton}
+//               className={`text-md p-4 rounded w-full h-full text-white transition
+//               ${value.trim() ? 'bg-white/10 hover:bg-white/20 cursor-pointer' : 'bg-white/5 cursor-not-allowed'}`}
+//             >
+//               Comprobar contraseña
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 const ObjectsIndex = () => {
-  const [showObjects, setShowObjects] = useState(false);
-  const [showPopup, setShowPopup] = useState(true);
+  const showObjects = true;
+  // const [showObjects, setShowObjects] = useState(false);
+  // const [showPopup, setShowPopup] = useState(true);
 
   return (
     <>
-      {showPopup && <Popup setShowPopup={setShowPopup} setShowObjects={setShowObjects} />}
+      {/* {showPopup && <Popup setShowPopup={setShowPopup} setShowObjects={setShowObjects} />} */}
       <div
         className={`${showObjects ? '' : 'blur-2xl'} min-h-screen bg-zinc-900 text-white py-20 px-6 space-y-12 md:space-y-20`}
       >
